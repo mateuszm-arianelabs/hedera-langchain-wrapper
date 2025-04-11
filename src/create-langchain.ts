@@ -10,7 +10,7 @@ export function createLangchain() {
         apiKey: process.env.OPENAI_API_KEY
       });
 
-    const agentKit = new HederaAgentKit(process.env.HEDERA_ACCOUNT_ID, process.env.HEDERA_PRIVATE_KEY, process.env.HEDERA_NETWORK_TYPE as "mainnet" | "testnet" | "previewnet")
+    const agentKit = new HederaAgentKit(process.env.HEDERA_ACCOUNT_ID!, process.env.HEDERA_PRIVATE_KEY!, process.env.HEDERA_NETWORK_TYPE as "mainnet" | "testnet" | "previewnet")
 
     const tools = createHederaTools(agentKit);
 

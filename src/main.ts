@@ -17,17 +17,6 @@ const interactSchema = z.object({
   fullPrompt: z.string()
 });
 
-export type HCSMessage = {
-  chunk_info: null | any;
-  consensus_timestamp: string;
-  message: string;
-  payer_account_id: string;
-  running_hash: string;
-  running_hash_version: number;
-  sequence_number: number;
-  topic_id: string;
-};
-
 app.post("/interact-with-hedera", async (req, res) => {
   console.log(req.body)
 
@@ -54,6 +43,8 @@ app.post("/interact-with-hedera", async (req, res) => {
       content: [{ type: "object", content: JSON.parse(responseText) }]
     }) 
   } catch (e) {
+    console.error(e)
+
     let errorString = "Unknown error";
     if (e instanceof Error) {
       errorString = e.toString();
